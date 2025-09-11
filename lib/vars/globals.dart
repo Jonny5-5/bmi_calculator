@@ -9,8 +9,8 @@ const double BIGGER_PADDING_SIZE = DEFALT_PADDING_SIZE * 2;
 const double BAR_PADDING_SIZE = DEFALT_PADDING_SIZE * 2;
 const double MESSAGE_MAX_WIDTH = 600;
 
-const double BAR_HEIGHT = 32;
-const double ARROW_HEIGHT = 48;
+const double BAR_HEIGHT = 36;
+const double ARROW_HEIGHT = 56;
 const double ARROW_WIDTH = 24;
 const double ARROW_SIZE = 30;
 const double ARROW_LINE_WIDTH = 2;

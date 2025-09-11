@@ -4,7 +4,6 @@ import 'package:bmi_calculator/vars/globals.dart';
 import 'package:bmi_calculator/widgets/bmi_bar.dart';
 import 'package:bmi_calculator/widgets/bmi_message_box.dart';
 import 'package:bmi_calculator/widgets/bmi_number.dart';
-import 'package:bmi_calculator/widgets/bmi_title.dart';
 import 'package:bmi_calculator/widgets/weight_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/widgets/height_selector.dart';
@@ -76,37 +75,34 @@ class BmiScreenState extends State<BmiScreen> {
             }
           }
         },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const BmiTitle(),
-            BmiNumber(bmi: bmi),
-            const SizedBox(height: BIGGER_PADDING_SIZE),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: BAR_PADDING_SIZE,
-                right: BAR_PADDING_SIZE,
-              ),
-              child: BmiBar(bmi),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                Container(
+                  constraints:
+                      const BoxConstraints(maxWidth: MESSAGE_MAX_WIDTH),
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      WeightSelector(weightCallback),
+                      HeightSelector(heightCallback),
+                    ],
+                  ),
+                ),
+                const Divider(height: 64),
+                BmiBar(bmi),
+                const SizedBox(height: 8),
+                BmiNumber(bmi: bmi),
+                const Divider(height: 48),
+                BmiMessageBox(bmi, height, isWeightMetric),
+              ],
             ),
-            const SizedBox(height: BIGGER_PADDING_SIZE),
-            Container(
-              constraints: const BoxConstraints(maxWidth: MESSAGE_MAX_WIDTH),
-              width: double.infinity,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  WeightSelector(weightCallback),
-                  HeightSelector(heightCallback),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(BIGGER_PADDING_SIZE),
-              child: BmiMessageBox(bmi, height, isWeightMetric),
-            ),
-          ],
+          ),
         ),
       ),
     );

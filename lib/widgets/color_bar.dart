@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 
 class ColorBar extends StatelessWidget {
   final double bmi;
-  const ColorBar({super.key, required this.bmi});
+
+  const ColorBar({
+    super.key,
+    required this.bmi,
+  });
+
   // ignore: non_constant_identifier_names
   final double DEFAULT_SCALE = 1.0;
 

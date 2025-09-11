@@ -23,67 +23,59 @@ class BmiMessageBoxState extends State<BmiMessageBox> {
         ? ""
         : calculator.getIdealWeight(widget.height, widget.isMetric);
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: Colors.grey),
-      ),
-      constraints: const BoxConstraints(maxWidth: MESSAGE_MAX_WIDTH),
-      width: double.infinity,
-      child: Column(
-        children: [
-          // ----------------- Header ----------------- //
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: DEFALT_PADDING_SIZE,
-            ),
-            child: Text(
-              header,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-            ),
+    return Column(
+      children: [
+        // ----------------- Header ----------------- //
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: DEFALT_PADDING_SIZE,
           ),
-
-          // ----------------- Subtitle BMI Range ----------------- //
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: DEFALT_PADDING_SIZE,
-            ),
-            child: Text(
-              subtitle,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: TextStyle(fontSize: 16),
-            ),
+          child: Text(
+            header,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
+        ),
 
-          SizedBox(height: 6),
-
-          // ----------------- Ideal Weight ----------------- //
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: DEFALT_PADDING_SIZE,
-            ),
-            child: Text(
-              idealWeight,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
+        // ----------------- Subtitle BMI Range ----------------- //
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: DEFALT_PADDING_SIZE,
           ),
-
-          // ----------------- Main text ----------------- //
-          Padding(
-            padding: const EdgeInsets.all(DEFALT_PADDING_SIZE),
-            child: Text(
-              text,
-              softWrap: true,
-              style: TextStyle(fontSize: 14),
-            ),
+          child: Text(
+            subtitle,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: TextStyle(fontSize: 16),
           ),
-        ],
-      ),
+        ),
+
+        SizedBox(height: 6),
+
+        // ----------------- Ideal Weight ----------------- //
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: DEFALT_PADDING_SIZE,
+          ),
+          child: Text(
+            idealWeight,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+        ),
+
+        // ----------------- Main text ----------------- //
+        Padding(
+          padding: const EdgeInsets.all(DEFALT_PADDING_SIZE),
+          child: Text(
+            text,
+            softWrap: true,
+            style: TextStyle(fontSize: 14),
+          ),
+        ),
+      ],
     );
   }
 }

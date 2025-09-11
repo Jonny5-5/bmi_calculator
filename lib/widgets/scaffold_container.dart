@@ -1,10 +1,12 @@
 import 'package:bmi_calculator/screens/info_screen.dart';
+import 'package:bmi_calculator/vars/strings.dart';
 import 'package:flutter/material.dart';
 
 class MyScaffoldContainerBackground extends StatefulWidget {
   final Widget? child;
   final bool showAppBar;
   final bool showShadows; // This should be used for the splash screen
+
   const MyScaffoldContainerBackground({
     super.key,
     required this.child,
@@ -26,7 +28,9 @@ class MyScaffoldContainerBackgroundState
     AppBar? bar;
     if (widget.showAppBar) {
       bar = AppBar(
-        // title: const Text(APP_NAME),
+        elevation: 1,
+        shadowColor: Colors.grey,
+        title: const Text(APP_NAME),
         actions: [
           IconButton(
             icon: const Icon(
@@ -44,16 +48,9 @@ class MyScaffoldContainerBackgroundState
       );
     }
 
-    Widget? body = Container(
-      // Create the normal container
-      alignment: Alignment.center,
-      child: widget.child,
-    );
-
     return Scaffold(
       appBar: bar,
-      body: body,
-      resizeToAvoidBottomInset: false,
+      body: widget.child,
     );
   }
 }

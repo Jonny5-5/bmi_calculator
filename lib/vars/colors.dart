@@ -7,7 +7,7 @@ final Color SOFT_GREY = Colors.grey.shade300;
 
 const Color UNDER_BMI_COLOR = Colors.lightBlue;
 const Color NORM_BMI_COLOR = Colors.lightGreen;
-const Color OVER_BMI_COLOR = Colors.yellow;
+const Color OVER_BMI_COLOR = Color(0xFFFDD835);
 const Color OBESE1_BMI_COLOR = Colors.orange;
 const Color OBESE2_BMI_COLOR = Colors.red;
 
