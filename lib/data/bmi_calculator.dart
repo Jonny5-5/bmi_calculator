@@ -80,8 +80,6 @@ class BmiCalculator {
         return OBESE2_WEIGHT_MESSAGE_HEADER_SF;
       case BmiCategory.obese3:
         return OBESE3_WEIGHT_MESSAGE_HEADER_SF;
-      default: // Should not happen
-        return DEFAULT_WEIGHT_MESSAGE_HEADER;
     }
   }
 
@@ -103,8 +101,6 @@ class BmiCalculator {
         return OBESE2_WEIGHT_MESSAGE_SUBTITLE_SF;
       case BmiCategory.obese3:
         return OBESE3_WEIGHT_MESSAGE_SUBTITLE_SF;
-      default: // Should not happen
-        return DEFAULT_WEIGHT_MESSAGE_SUBTITLE;
     }
   }
 
@@ -126,8 +122,6 @@ class BmiCalculator {
         return OBESE2_WEIGHT_MESSAGE_TEXT_SF;
       case BmiCategory.obese3:
         return OBESE3_WEIGHT_MESSAGE_TEXT_SF;
-      default: // Should not happen
-        return DEFAULT_WEIGHT_MESSAGE_TEXT;
     }
   }
 

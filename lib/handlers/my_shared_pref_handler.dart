@@ -16,7 +16,7 @@ class MySharedPreferenceHandler {
   }
 
   /// Sets the [key] with the [value]
-  /// Only works if value is of type: bool, int, double, String, List<String>
+  /// Only works if value is of type: `bool`, `int`, `double`, `String`, `List<String>`
   void setValue(String key, dynamic value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if (value is bool) {

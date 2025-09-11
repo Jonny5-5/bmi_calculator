@@ -20,10 +20,11 @@ class SplashScreenState extends State<SplashScreen> {
   void switchScreenOnWait() {
     Future.delayed(const Duration(seconds: SPLASH_SCREEN_TIMER)).then(
       (value) => {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const BmiScreen()),
-        )
+        if (mounted)
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const BmiScreen()),
+          )
       },
     );
   }
