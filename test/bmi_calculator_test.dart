@@ -10,9 +10,12 @@ void main() {
     // Test cases for getBmi
     group('getBmi', () {
       test('should return correct BMI for valid inputs', () {
-        expect(calculator.getBmi(70, 1.75), closeTo(22.86, 0.01)); // 70kg, 1.75m
-        expect(calculator.getBmi(50, 1.60), closeTo(19.53, 0.01)); // 50kg, 1.60m
-        expect(calculator.getBmi(100, 2.00), closeTo(25.00, 0.01)); // 100kg, 2.00m
+        expect(
+            calculator.getBmi(70, 1.75), closeTo(22.86, 0.01)); // 70kg, 1.75m
+        expect(
+            calculator.getBmi(50, 1.60), closeTo(19.53, 0.01)); // 50kg, 1.60m
+        expect(
+            calculator.getBmi(100, 2.00), closeTo(25.00, 0.01)); // 100kg, 2.00m
       });
 
       test('should throw BmiException for zero weight', () {
@@ -24,19 +27,23 @@ void main() {
       });
 
       test('should throw BmiException for negative weight', () {
-        expect(() => calculator.getBmi(-70, 1.75), throwsA(isA<BmiException>()));
+        expect(
+            () => calculator.getBmi(-70, 1.75), throwsA(isA<BmiException>()));
       });
 
       test('should throw BmiException for negative height', () {
-        expect(() => calculator.getBmi(70, -1.75), throwsA(isA<BmiException>()));
+        expect(
+            () => calculator.getBmi(70, -1.75), throwsA(isA<BmiException>()));
       });
 
       test('should throw BmiException for BMI_ERROR weight', () {
-        expect(() => calculator.getBmi(BMI_ERROR, 1.75), throwsA(isA<BmiException>()));
+        expect(() => calculator.getBmi(BMI_ERROR, 1.75),
+            throwsA(isA<BmiException>()));
       });
 
       test('should throw BmiException for BMI_ERROR height', () {
-        expect(() => calculator.getBmi(70, BMI_ERROR), throwsA(isA<BmiException>()));
+        expect(() => calculator.getBmi(70, BMI_ERROR),
+            throwsA(isA<BmiException>()));
       });
     });
 
