@@ -81,13 +81,13 @@ class BmiScreenState extends State<BmiScreen> {
             physics: AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
                 Container(
                   constraints:
                       const BoxConstraints(maxWidth: MESSAGE_MAX_WIDTH),
                   width: double.infinity,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       WeightSelector(weightCallback),
                       HeightSelector(heightCallback),
@@ -96,9 +96,10 @@ class BmiScreenState extends State<BmiScreen> {
                 ),
                 const Divider(height: 64),
                 BmiBar(bmi),
-                const SizedBox(height: 8),
+                const SizedBox(height: 16),
                 BmiNumber(bmi: bmi),
-                const Divider(height: 48),
+                const Divider(height: 32),
+                const SizedBox(height: 8),
                 BmiMessageBox(bmi, height, isWeightMetric),
               ],
             ),

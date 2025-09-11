@@ -31,7 +31,6 @@ class ColorBar extends StatelessWidget {
     // I don't want the width to change as the bar moves though. Just height.
     // flex = (flex * scale).toInt();
     // var border = scale == DEFAULT_SCALE ? null : Border.all(color: Colors.black);
-    var border = Border.all(color: Colors.black, width: BOX_BORDER_WIDTH);
 
     var shadows = scale == DEFAULT_SCALE
         ? null
@@ -43,7 +42,7 @@ class ColorBar extends StatelessWidget {
         height: BAR_HEIGHT * scale,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS),
-          border: border,
+          border: Border.all(color: Colors.grey.shade300, width: 0.3),
           boxShadow: shadows,
           color: color,
         ),

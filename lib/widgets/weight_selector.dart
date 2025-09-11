@@ -39,68 +39,59 @@ class WeightSelectorState extends State<WeightSelector> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: Colors.black),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(DEFALT_PADDING_SIZE),
-        child: Column(
+    return Column(
+      children: [
+        Text(
+          WEIGHT_TEXT,
+          style: TextStyle(fontSize: 40),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              WEIGHT_TEXT,
-              style: TextStyle(fontSize: 40),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
               children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      height: TEXT_INPUT_HEIGHT,
-                      width: TEXT_INPUT_WIDTH,
-                      child: TextField(
-                        controller: controller,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          labelText: isMetric
-                              ? WEIGHT_LABEL_METRIC
-                              : WEIGHT_LABEL_IMPER,
-                        ),
-                        keyboardType: TextInputType.number,
-                        onChanged: textChanged,
-                        onSubmitted: textChanged,
-                      ),
+                SizedBox(
+                  height: TEXT_INPUT_HEIGHT,
+                  width: TEXT_INPUT_WIDTH,
+                  child: TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      labelText:
+                          isMetric ? WEIGHT_LABEL_METRIC : WEIGHT_LABEL_IMPER,
                     ),
-                    const SizedBox(
-                      height: TEXT_INPUT_HEIGHT,
-                      width: TEXT_INPUT_WIDTH,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.fromLTRB(DEFALT_PADDING_SIZE, 0, 0, 0),
-                  child: ToggleSwitch(
-                    minWidth: 50,
-                    isVertical: true,
-                    radiusStyle: true,
-                    initialLabelIndex: toggleIndex,
-                    inactiveBgColor: Theme.of(context).splashColor,
-                    activeBgColors: [
-                      [MINT_GREEN],
-                      [MINT_GREEN],
-                    ],
-                    labels: labels,
-                    onToggle: onSwitch,
+                    keyboardType: TextInputType.number,
+                    onChanged: textChanged,
+                    onSubmitted: textChanged,
                   ),
+                ),
+                const SizedBox(
+                  height: TEXT_INPUT_HEIGHT,
+                  width: TEXT_INPUT_WIDTH,
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(DEFALT_PADDING_SIZE, 0, 0, 0),
+              child: ToggleSwitch(
+                minWidth: 48,
+                isVertical: true,
+                radiusStyle: true,
+                initialLabelIndex: toggleIndex,
+                inactiveBgColor: Theme.of(context).splashColor,
+                activeBgColors: [
+                  [MINT_GREEN],
+                  [MINT_GREEN],
+                ],
+                activeFgColor: Colors.black,
+                inactiveFgColor: Colors.black,
+                labels: labels,
+                onToggle: onSwitch,
+              ),
+            ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

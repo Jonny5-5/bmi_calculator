@@ -55,38 +55,40 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return MyScaffoldContainerBackground(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            WELCOME_MESSAGE,
-            style: TextStyle(
-              fontSize: 48,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-          const SizedBox(height: BIGGER_PADDING_SIZE * 3),
-          AnimatedScale(
-            scale: zoomIn ? 1.1 : 1,
-            duration: Duration(milliseconds: zoomIn ? 1000 : 300),
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
-              child: Image.asset(
-                "assets/images/icon.png",
-                height: 130,
-                width: 130,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              WELCOME_MESSAGE,
+              style: TextStyle(
+                fontSize: 48,
+                // fontStyle: FontStyle.italic,
               ),
             ),
-            onEnd: () {
-              setState(() {
-                zoomIn = !zoomIn;
-              });
-            },
-          ),
-          const SizedBox(height: BIGGER_PADDING_SIZE * 10),
-        ],
+            const SizedBox(height: BIGGER_PADDING_SIZE * 3),
+            AnimatedScale(
+              scale: zoomIn ? 1.1 : 1,
+              duration: Duration(milliseconds: zoomIn ? 1000 : 300),
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                child: Image.asset(
+                  "assets/images/icon.png",
+                  height: 130,
+                  width: 130,
+                ),
+              ),
+              onEnd: () {
+                setState(() {
+                  zoomIn = !zoomIn;
+                });
+              },
+            ),
+            const SizedBox(height: BIGGER_PADDING_SIZE * 10),
+          ],
+        ),
       ),
     );
   }
