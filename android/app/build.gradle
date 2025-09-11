@@ -22,6 +22,14 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0.2'
 }
 
+// ADDED FOR THE KEYSTORE STUFF
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+// ADDED FOR THE KEYSTORE STUFF
+
 android {
     namespace "com.jonathan.bmicalculator"
     compileSdkVersion 35
@@ -53,12 +61,21 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         debug {
             // Nothing
         }
         release {
-            //signingConfig signingConfigs.releases
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
