@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/data/bmi_calculator.dart';
 import 'package:bmi_calculator/data/bmi_error.dart';
 import 'package:bmi_calculator/vars/globals.dart'; // Import BMI_ERROR
+import 'package:bmi_calculator/vars/strings.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -88,6 +89,90 @@ void main() {
       test('lbToKg should convert correctly', () {
         expect(calculator.lbToKg(2.20462), closeTo(1.0, 0.01));
         expect(calculator.lbToKg(154.323), closeTo(70.0, 0.01));
+      });
+    });
+
+    group('getBmiMessageHeader', () {
+      test('should return correct header for each BMI category', () {
+        expect(calculator.getBmiMessageHeader(15.0),
+            VERY_UNDER_MESSAGE_HEADER_SF);
+        expect(calculator.getBmiMessageHeader(17.0),
+            UNDER_WEIGHT_MESSAGE_HEADER_SF);
+        expect(calculator.getBmiMessageHeader(22.0),
+            NORMAL_WEIGHT_MESSAGE_HEADER_SF);
+        expect(
+            calculator.getBmiMessageHeader(27.0), OVER_WEIGHT_MESSAGE_HEADER_SF);
+        expect(
+            calculator.getBmiMessageHeader(32.0), OBESE1_WEIGHT_MESSAGE_HEADER_SF);
+        expect(
+            calculator.getBmiMessageHeader(37.0), OBESE2_WEIGHT_MESSAGE_HEADER_SF);
+        expect(
+            calculator.getBmiMessageHeader(42.0), OBESE3_WEIGHT_MESSAGE_HEADER_SF);
+        expect(calculator.getBmiMessageHeader(DEFAULT_BMI),
+            DEFAULT_WEIGHT_MESSAGE_HEADER);
+      });
+    });
+
+    group('getBmiMessageSubtitle', () {
+      test('should return correct subtitle for each BMI category', () {
+        expect(calculator.getBmiMessageSubtitle(15.0),
+            VERY_UNDER_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(17.0),
+            UNDER_WEIGHT_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(22.0),
+            NORMAL_WEIGHT_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(27.0),
+            OVER_WEIGHT_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(32.0),
+            OBESE1_WEIGHT_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(37.0),
+            OBESE2_WEIGHT_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(42.0),
+            OBESE3_WEIGHT_MESSAGE_SUBTITLE_SF);
+        expect(calculator.getBmiMessageSubtitle(DEFAULT_BMI),
+            DEFAULT_WEIGHT_MESSAGE_SUBTITLE);
+      });
+    });
+
+    group('getBmiMessageText', () {
+      test('should return correct text for each BMI category', () {
+        expect(
+            calculator.getBmiMessageText(15.0), VERY_UNDER_MESSAGE_TEXT_SF);
+        expect(
+            calculator.getBmiMessageText(17.0), UNDER_WEIGHT_MESSAGE_TEXT_SF);
+        expect(
+            calculator.getBmiMessageText(22.0), NORMAL_WEIGHT_MESSAGE_TEXT_SF);
+        expect(calculator.getBmiMessageText(27.0), OVER_WEIGHT_MESSAGE_TEXT_SF);
+        expect(
+            calculator.getBmiMessageText(32.0), OBESE1_WEIGHT_MESSAGE_TEXT_SF);
+        expect(
+            calculator.getBmiMessageText(37.0), OBESE2_WEIGHT_MESSAGE_TEXT_SF);
+        expect(
+            calculator.getBmiMessageText(42.0), OBESE3_WEIGHT_MESSAGE_TEXT_SF);
+        expect(calculator.getBmiMessageText(DEFAULT_BMI),
+            DEFAULT_WEIGHT_MESSAGE_TEXT);
+      });
+    });
+
+    group('getIdealWeight', () {
+      test(
+          'should return correct ideal weight range for metric units (height in meters)',
+          () {
+        // For a height of 1.75m
+        // low = 18.5 * 1.75 * 1.75 = 56.6
+        // high = 24.9 * 1.75 * 1.75 = 76.3
+        expect(calculator.getIdealWeight(1.75, true),
+            '$IDEAL_WEIGHT_MESSAGE 56.7$WEIGHT_METRIC_TEXT - 76.3$WEIGHT_METRIC_TEXT');
+      });
+
+      test(
+          'should return correct ideal weight range for imperial units (height in meters)',
+          () {
+        // For a height of 1.75m (5.74 ft)
+        // low (kg) = 56.7, low (lb) = 124.9
+        // high (kg) = 76.3, high (lb) = 168.1
+        expect(calculator.getIdealWeight(1.75, false),
+            '$IDEAL_WEIGHT_MESSAGE 124.9$WEIGHT_IMPER_TEXT - 168.1$WEIGHT_IMPER_TEXT');
       });
     });
   });
