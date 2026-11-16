@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   toggle_switch: ^2.1.0
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^2.0.0
   url_launcher: ^6.1.11
   in_app_review: ^2.0.8
   shared_preferences: ^2.2.2
