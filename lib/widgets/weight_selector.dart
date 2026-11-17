@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 import 'package:bmi_calculator/vars/globals.dart';
 import 'package:bmi_calculator/vars/strings.dart';
@@ -73,20 +72,18 @@ class WeightSelectorState extends State<WeightSelector> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(DEFALT_PADDING_SIZE, 0, 0, 0),
-              child: ToggleSwitch(
-                minWidth: 48,
-                isVertical: true,
-                radiusStyle: true,
-                initialLabelIndex: toggleIndex,
-                inactiveBgColor: Theme.of(context).splashColor,
-                activeBgColors: [
-                  [MINT_GREEN],
-                  [MINT_GREEN],
-                ],
-                activeFgColor: Colors.black,
-                inactiveFgColor: Colors.black,
-                labels: labels,
-                onToggle: onSwitch,
+              child: ToggleButtons(
+                direction: Axis.vertical,
+                borderRadius: BorderRadius.circular(16),
+                isSelected: [toggleIndex == 0, toggleIndex == 1],
+                color: Colors.black,
+                selectedColor: Colors.black,
+                fillColor: MINT_GREEN,
+                borderColor: Theme.of(context).splashColor,
+                selectedBorderColor: MINT_GREEN,
+                constraints: const BoxConstraints(minWidth: 48, minHeight: 40),
+                onPressed: onSwitch,
+                children: labels.map((label) => Text(label)).toList(),
               ),
             ),
           ],
